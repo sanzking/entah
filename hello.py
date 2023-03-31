@@ -27,10 +27,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def get_ip():
-    url = 'https://whatismyipaddress.com/'
-    r = requests.get(url).text
-    soup = bs(r, 'html.parser')
-    ip = soup.find('p', class_='ip-address').text
+    url = 'https://api.ipify.org'
+    ip = requests.get(url).text
     return scamalytics(ip)
 
 def scamalytics(ip):
